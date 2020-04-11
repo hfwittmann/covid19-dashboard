@@ -24,3 +24,5 @@ export PYTHONPATH=$(pwd)
 
 
 Enjoy!
+
+DEMO : https://covid19.arthought.com/
