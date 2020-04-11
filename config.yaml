@@ -1,0 +1,124 @@
+DateFormat: '%Y-%B-%d' # 2020-March-22
+DateFormatShort: '%b-%d' # March-22
+DateFormatList: '%Y-%m-%d' # March-22
+
+TYPES:
+    Confirmed: Confirmed
+    Deaths: Deaths
+    Death_Rate: Death Rate<br>Deaths per Confirmed Cases (%)
+
+Titles:
+    Absolute: ...
+    Difference: Difference to previous day
+    Change(%): Change(%) to previous day
+
+# Spaces:
+#     Absolute: lambda: np.logspace(-5, 0, len(Colors))
+#     Difference: lambda: np.logspace(-5, 0, len(Colors))
+#     Change(%): lambda: np.linspace(0, 1, len(Colors))
+
+Color_continous_scale:
+    Absolute:
+        Confirmed: hot
+        Deaths: hot
+        Death_Rate: rdbu
+
+    Difference:
+        Confirmed: hot
+        Deaths: hot
+        Death_Rate: rdbu
+
+    Change(%):
+        Confirmed: hot
+        Deaths: hot
+        Death_Rate: rdbu
+
+
+Reverse_colors:
+    Absolute:
+        Confirmed: True
+        Deaths: True
+        Death_Rate: True
+
+
+    Difference:
+        Confirmed: True
+        Deaths: True
+        Death_Rate: True
+
+
+    Change(%):
+        Confirmed: True
+        Deaths: True
+        Death_Rate: True
+
+
+
+Override_ColorRanges:
+    Absolute:
+        Confirmed: {}
+        Deaths: {}
+        Death_Rate: {}
+
+
+    Difference:
+        Confirmed: {}
+        Deaths: {}
+        Death_Rate: {}
+
+    Change(%):
+        Confirmed:
+            range_color: [0,1]
+        Deaths:
+            range_color: [0,1]
+        Death_Rate:
+            range_color: [-1,1]
+
+
+
+
+Formats:
+    Absolute:
+        Confirmed: .0f
+        Deaths: .0f
+        Death_Rate: .1%%
+
+
+    Difference:
+        Confirmed: .0f
+        Deaths: .0f
+        Death_Rate: .1%%
+
+
+    Change(%):
+        Confirmed: '%%'
+        Deaths: '%%'
+        Death_Rate: '%%'
+
+
+
+ColorBar:
+    Absolute:
+        Confirmed: ''
+        Deaths: ''
+        Death_Rate: ''
+
+
+    Difference:
+        Confirmed: ''
+        Deaths: ''
+        Death_Rate: ''
+
+
+    Change(%):
+        Confirmed: ''
+        Deaths: ''
+        Death_Rate: ''
+
+
+
+    # ColorBar = {
+    #     'Absolute': 'Absolute Number',
+    #     'Difference': 'Difference to pr. day',
+    #     'Change(%)': 'Change(%) to pr. day',
+    # }
