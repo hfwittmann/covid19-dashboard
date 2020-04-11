@@ -26,3 +26,8 @@ export PYTHONPATH=$(pwd)
 Enjoy!
 
 DEMO : https://covid19.arthought.com/
+ 
+ 
+Remark:
+If you like it feel free to give me a github star, or to like my linked post :
+https://www.linkedin.com/posts/felix-wittmann-14485611_i-have-now-introduced-a-forecast-into-my-activity-6651854492234981376-HYKO
