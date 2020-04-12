@@ -19,7 +19,7 @@
             "name": "Streamlit: Current File (Integrated Terminal)",
             "type": "python",
             "request": "launch",
-            "program": "/Users/u712228/Lufthansa/HFW_Personal/arthought/wordpress/streamlit-folder/.venv/bin/streamlit",
+            "program": ".venv/bin/streamlit",
             "args": [
                 "run",
                 "${file}"
