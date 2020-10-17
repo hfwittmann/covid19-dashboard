@@ -1,6 +1,6 @@
 import streamlit as st
-import streamlit.ReportThread as ReportThread
-from streamlit.server.Server import Server
+from streamlit.report_thread import get_report_ctx
+# from streamlit.server.Server import Server
 import time
 import functools
 import random
@@ -11,29 +11,11 @@ import string
 # https://gist.github.com/tvst/6ef6287b2f3363265d51531c62a84f51
 def get_session_id():
     # Hack to get the session object from Streamlit.
-
-    ctx = ReportThread.get_report_ctx()
-
-    session = None
-    session_infos = Server.get_current()._session_infos.values()
-
-    for session_info in session_infos:
-        s = session_info.session
-        if ((hasattr(s, '_main_dg') and s._main_dg == ctx.main_dg)
-                # Streamlit < 0.54.0
-                or
-                # Streamlit >= 0.54.0
-            (not hasattr(s, '_main_dg') and s.enqueue == ctx.enqueue)):
-            session = session_info.session
-
-    if session is None:
-        raise RuntimeError(
-            "Oh noes. Couldn't get your Streamlit Session object"
-            'Are you doing something fancy with threads?')
-
-    return id(session)
+    ctx = get_report_ctx()
+    return ctx.session_id
 
 
+# https://gist.github.com/treuille/f988f78c4610c78322d089eb77f74598
 def fancy_cache(func=None, ttl=None, unique_to_session=False, **cache_kwargs):
     """A fancier cache decorator which allows items to expire after a certain time
     as well as promises the cache values are unique to each session.

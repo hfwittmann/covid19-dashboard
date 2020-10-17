@@ -14,12 +14,15 @@ from sub.plot_timeseries import plotTimeseries
 from sub.projection_helper import plot_cases_plus
 from sub.fancy_cache import fancy_cache
 
+from sub.helper import get_set_selection, get_set_multiselection
+
 
 @fancy_cache(ttl=86400 / 4, unique_to_session=False, persist=True)
 def get_DD_T_norm(n, typeCriterion, config, DD):
     '''
     n is the number of cases to define T_0
     '''
+
     # calculate timeshifts
     T_norm = get_ts_norm(config, DD[typeCriterion], n).set_index(
         ['date', 'country'])[['T_norm', 'T_0', 'country_T_0', 'T_norm_days']]
@@ -43,17 +46,23 @@ def get_DD_T_norm(n, typeCriterion, config, DD):
 def covid19_timeseries(config, DD):
 
     ######################################### Controls ##############################################
-    ConfirmedDeaths = st.sidebar.multiselect(
-        'Select Type', ['Confirmed', 'Deaths', 'Death_Rate'],
-        default=['Confirmed', 'Deaths'])
+    ConfirmedDeaths = get_set_multiselection(
+        st.sidebar.multiselect,
+        name='ConfirmedDeaths',
+        label='Select Type',
+        options=['Death_Rate', 'Confirmed', 'Deaths'],
+        default_choices=['Confirmed', 'Deaths'])
+
     LogScale = True  # st.sidebar.selectbox('Select Log Scale', options=[True, False])
 
     datecode = sorted(DD['Confirmed'].date.dt.strftime(
         config['DateFormatList']).unique())[-1]
 
-    AbsDiffRate = st.sidebar.selectbox(
-        'Absolute, Difference per Day, or Change(%) per Day',
-        ['Absolute', 'Difference', 'Change(%)'])
+    AbsDiffRate = get_set_selection(
+        st.sidebar.selectbox,
+        name='AbsDiffRate',
+        label='Absolute, Difference per Day, or Change(%) per Day',
+        options=['Absolute', 'Difference', 'Change(%)'])
 
     if AbsDiffRate == 'Change(%)':
         st.sidebar.markdown(
@@ -69,25 +78,15 @@ def covid19_timeseries(config, DD):
     #         DD[type]['Change(%)'] = DD[type][f'Change(%)_{Averaging_Period}']
 
     st.sidebar.header("Define day zero")
-    typeCriterion = 'Deaths'
-    # typeCriterion = st.sidebar.selectbox(
-    #     'Select reported type to define the day zero', ['Confirmed', 'Deaths'])
+    typeCriterion = 'Deaths'  #
 
-    if typeCriterion in ['Deaths']:
-        n = st.sidebar.selectbox(
-            'Select Number of deaths to define the day zero, ie the day when the number of deaths in a country hit that number.',
-            options=[300, 500, 700],
-            index=0,
-            key='Deaths')
-
-    if typeCriterion in ['Confirmed']:
-        n = st.sidebar.slider(
-            'Select Number of confirmed cases to define the day zero, ie the day when the number of confirmed cases in a country hit that number.',
-            1000,
-            10000,
-            value=5000,
-            step=1000,
-            key='Confirmed')
+    n = get_set_selection(
+        st.sidebar.selectbox,
+        name='n',
+        label=
+        'Select Number of deaths to define the day zero, ie the day when the number of deaths in a country hit that number.',
+        options=[300, 500, 700],
+        key='Deaths')
 
     # calculate from Confirmed
 
@@ -115,13 +114,23 @@ def covid19_timeseries(config, DD):
 
     projection = projection.header("Projection")
 
-    show_projection = show_projection.radio('Show projection', [False, True],
-                                            key='show_projection')
+    show_projection = get_set_selection(show_projection.radio,
+                                        name='show_projection',
+                                        label='Show projection',
+                                        options=[False, True],
+                                        key='show_projection')
 
     if show_projection:
-        timehorizon = st.sidebar.selectbox('Select timehorizon', [10, 20, 30])
-        show_details = st.sidebar.radio('Show details of prediction model',
-                                        [False, True])
+
+        timehorizon = get_set_selection(st.sidebar.selectbox,
+                                        name='timehorizon',
+                                        label='Select timehorizon',
+                                        options=[10, 20, 30])
+
+        show_details = get_set_selection(
+            st.sidebar.radio,
+            label='Show details of prediction model',
+            options=[False, True])
 
     # countries_selected = st.sidebar.multiselect(
     #     'Select Country',

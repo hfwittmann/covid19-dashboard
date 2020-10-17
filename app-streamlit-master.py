@@ -3,6 +3,7 @@ import streamlit as st
 import yaml
 import pandas as pd
 from sub.mydata_change import load_timeseries_change
+from sub.helper import get_index, get_set_selection
 from app_streamlit_map import covid19_maps
 from app_streamlit_timeseries import covid19_timeseries
 # from stumpy import stump
@@ -35,8 +36,10 @@ st.sidebar.markdown("""
 This visualisation presents maps and timeseries of the current corona virus pandemic.
 """)
 
-visualisation = st.sidebar.selectbox(label="Select Maps or timeseries",
-                                     options=['Maps', 'Timeseries'])
+visualisation = get_set_selection(st.sidebar.selectbox,
+                                  name='visualisation',
+                                  label='Select Maps or Timeseries',
+                                  options=['Maps', 'Timeseries'])
 
 st.sidebar.header("Settings")
 if visualisation == 'Maps':

@@ -1,0 +1,14 @@
+basepage: http://localhost:8501
+
+pages:
+  - /?visualisation=Maps&ConfirmedDeaths=Confirmed&AbsDiffRate=Difference&n=500&show_projection=False
+  - /?visualisation=Maps&ConfirmedDeaths=Confirmed&ConfirmedDeaths=Deaths&AbsDiffRate=Difference&n=500&show_projection=False
+  - /?visualisation=Maps&ConfirmedDeaths=Confirmed&AbsDiffRate=Difference&n=500&show_projection=True
+  - /?visualisation=Maps&ConfirmedDeaths=Confirmed&ConfirmedDeaths=Deaths&AbsDiffRate=Difference&n=500&show_projection=True
+  - /?visualisation=Timeseries&ConfirmedDeaths=Confirmed&ConfirmedDeaths=Deaths&AbsDiffRate=Difference&n=300&show_projection=False
+  - /?visualisation=Timeseries&ConfirmedDeaths=Confirmed&ConfirmedDeaths=Deaths&AbsDiffRate=Difference&n=500&show_projection=False
+  - /?visualisation=Timeseries&ConfirmedDeaths=Confirmed&ConfirmedDeaths=Deaths&AbsDiffRate=Difference&n=700&show_projection=False
+  - /?visualisation=Timeseries&ConfirmedDeaths=Confirmed&ConfirmedDeaths=Deaths&AbsDiffRate=Difference&n=300&show_projection=True
+  - /?visualisation=Timeseries&ConfirmedDeaths=Confirmed&ConfirmedDeaths=Deaths&AbsDiffRate=Difference&n=500&show_projection=True
+  - /?visualisation=Timeseries&ConfirmedDeaths=Confirmed&ConfirmedDeaths=Deaths&AbsDiffRate=Difference&n=700&show_projection=True
+

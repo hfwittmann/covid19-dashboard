@@ -7,3 +7,6 @@ python-dotenv
 pyyaml
 scipy
 numba
+yapf
+beautifulsoup4
+requests-html

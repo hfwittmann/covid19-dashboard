@@ -12,6 +12,8 @@ from sub.myplot import plotMap
 from sub.plot_timeseries_helper import get_ts_norm
 from sub.plot_timeseries import plotTimeseries
 
+from sub.helper import get_set_selection, get_set_multiselection
+
 
 def covid19_maps(config, DD):
 
@@ -27,9 +29,13 @@ def covid19_maps(config, DD):
     # print(options_date_map)
 
     ######################################### Controls ##############################################
-    ConfirmedDeaths = st.sidebar.multiselect(
-        'Select Type', ['Death_Rate', 'Confirmed', 'Deaths'],
-        default=['Confirmed', 'Deaths'])
+    ConfirmedDeaths = get_set_multiselection(
+        st.sidebar.multiselect,
+        name='ConfirmedDeaths',
+        label='Select Type',
+        options=['Death_Rate', 'Confirmed', 'Deaths'],
+        default_choices=['Confirmed', 'Deaths'])
+
     LogScale = True  # st.sidebar.selectbox('Select Log Scale', options=[True, False])
 
     datecode = st.sidebar.selectbox("Select Date",
@@ -38,9 +44,11 @@ def covid19_maps(config, DD):
     st.markdown(f""" ... as of {datecode}
     """)
 
-    AbsDiffRate = st.sidebar.selectbox(
-        'Absolute, Difference per Day, or Change(%) per Day',
-        ['Absolute', 'Difference', 'Change(%)'])
+    AbsDiffRate = get_set_selection(
+        st.sidebar.selectbox,
+        name='AbsDiffRate',
+        label='Absolute, Difference per Day, or Change(%) per Day',
+        options=['Absolute', 'Difference', 'Change(%)'])
 
     if AbsDiffRate == 'Change(%)':
         st.sidebar.markdown(
