@@ -5,11 +5,12 @@ from pandas.api.types import is_datetime64_any_dtype
 from pandas.api.types import is_integer_dtype
 
 import numpy as np
+import re
 import plotly
 import plotly.express as px
 
-from sub.projection_helper import plot_cases_plus
 from sub.fancy_cache import fancy_cache
+
 
 # hash_funcs={
 #     pd.DataFrame:
@@ -17,10 +18,35 @@ from sub.fancy_cache import fancy_cache
 #     str:
 #     lambda x: blubber(x)
 # },
+def plot_cases_plus(TNORM, type, Types_type, AbsDiffRate):
+
+    TNORM = TNORM.copy()
+    TNORM['date'] = TNORM['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
+
+    fig = px.scatter(TNORM,
+                     x='T_norm_days',
+                     y=AbsDiffRate,
+                     color='country_T_0',
+                     hover_name='country',
+                     hover_data=['date'],
+                     log_y=True)
+
+    # print(px.colors.qualitative.Plotly)
+    ncolors = len(px.colors.qualitative.Plotly)
+
+    # fig.for_each_trace(lambda trace: print(trace.hovertemplate))
+
+    fig.for_each_trace(lambda trace: trace.update(hovertemplate=re.sub(
+        pattern='<br>country_T_0=[a-zA-Z0-9 :-]*',
+        repl='',
+        string=trace.hovertemplate)))
+
+    # print(fig.data[-1])
+
+    return fig
 
 
 def plotTimeseries(config,
-                   show_projection,
                    z,
                    LogScale,
                    countries,
@@ -43,6 +69,7 @@ def plotTimeseries(config,
         countries)].copy()
     # ts_norm_countries.to_csv(f'ts_norm_countries-{typeCriterion}-n={n}.csv',
     #                          index=False)
+    fig = None
 
     if AbsDiffRate in ['Absolute', 'Difference', 'Change(%)']:
 
@@ -52,11 +79,7 @@ def plotTimeseries(config,
         # print(TNORM_in_projection.set_index(['country']).loc['Germany'])
         TNORM = ts_norm_countries
 
-        fig = plot_cases_plus(TNORM,
-                              type,
-                              TYPES[type],
-                              AbsDiffRate,
-                              show_projection=show_projection)
+        fig = plot_cases_plus(TNORM, type, TYPES[type], AbsDiffRate)
         # st.plotly_chart(fig)
 
     fig.update_layout(legend={'title': {'text': 'Country: Day zero'}})

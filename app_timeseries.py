@@ -90,7 +90,6 @@ def covid19_timeseries(config, S):
     for type in S['ConfirmedDeaths']:
 
         fig = plotTimeseries(config=config,
-                             show_projection=False,
                              z=DD_T_norm[type],
                              AbsDiffRate=AbsDiffRate,
                              type=type,
