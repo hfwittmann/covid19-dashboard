@@ -19,7 +19,7 @@ def get_countries():
     return df_chloropleth
 
 
-@fancy_cache(ttl=86400 / 4, unique_to_session=False, persist=True)
+@fancy_cache(ttl=86400, unique_to_session=False, persist=True)
 def load_timeseries(
     name,
     base_url='https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series'

@@ -1,0 +1,62 @@
+Visualisation:
+  name: Visualisation
+  type: st.sidebar.selectbox
+  label: "Select Maps or Timeseries"
+  options: ['Maps', 'Timeseries']
+  default: ['Timeseries']
+
+
+ConfirmedDeaths:
+  name: ConfirmedDeaths
+  type: st.sidebar.multiselect
+  label: "Select Type"
+  options: ['Death_Rate', 'Confirmed', 'Deaths']
+  default: ['Confirmed', 'Deaths']
+
+
+AbsDiffRate:
+  name: AbsDiffRate
+  type: st.sidebar.multiselect
+  label: "Absolute, Difference per Day, or Change(%) per Day"
+  options: ['Absolute', 'Difference', 'Change(%)']
+  default: ['Difference']
+
+Countries:
+  constraint:
+    $: 
+      self['Visualisation'] in ['Timeseries']
+  name: Countries
+  type: st.sidebar.multiselect
+  label: "Select Countries"
+  options: 
+    $:
+      self.session_state.D['Confirmed'].country.unique().tolist()
+  default: 
+    $:
+      ['Germany', 'United States']
+Day_Zero:
+  constraint:
+    $: 
+      self['Visualisation'] in ['Timeseries']
+  name: n
+  type: st.sidebar.selectbox
+  label: Select Number of deaths to define the day zero, ie the day when the number of deaths in a country hit that number.
+  options: [300, 500, 700]
+  default: [500]
+
+Date:
+  constraint:
+    $: 
+      self['Visualisation'] in ['Maps']
+  name: Datecode
+  type: st.sidebar.selectbox
+  label: "Select Date"
+  options: 
+    $:
+      self.session_state.options_date_map
+  default: 
+    $:
+      self.session_state.options_date_map[0]
+
+
+

@@ -63,7 +63,7 @@ def plotMap(z, type, AbsDiffRate, LogScale, datecode, color_continuous_scale,
     Titles = config['Titles']
 
     fig.update_layout(
-        title_text=f'<b>{TYPES[type]}</b>',
+        # title_text=f'<b>{TYPES[type]}</b>',
         geo=dict(showframe=False,
                  showcoastlines=False,
                  projection_type='equirectangular'),

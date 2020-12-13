@@ -8,7 +8,7 @@ from sub.mydata import load_timeseries
 import pandas as pd
 
 
-@fancy_cache(ttl=86400 / 4, unique_to_session=False, persist=True)
+@fancy_cache(ttl=86400, unique_to_session=False, persist=True)
 def load_timeseries_change(name):
     '''
     'Absolute', 'Difference', 'Change(%)'

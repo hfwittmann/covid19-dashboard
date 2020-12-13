@@ -8,8 +8,15 @@ import numpy as np
 import plotly
 import plotly.express as px
 
-from sub.projection_helper import get_TNORM_plus, plot_cases_plus
+from sub.projection_helper import plot_cases_plus
 from sub.fancy_cache import fancy_cache
+
+# hash_funcs={
+#     pd.DataFrame:
+#     lambda _: pd.to_datetime('today').strftime("%Y-%m-%d"),
+#     str:
+#     lambda x: blubber(x)
+# },
 
 
 def plotTimeseries(config,
@@ -34,18 +41,23 @@ def plotTimeseries(config,
 
     ts_norm_countries: pd.DataFrame = ts_norm.loc[ts_norm.country.isin(
         countries)].copy()
+    # ts_norm_countries.to_csv(f'ts_norm_countries-{typeCriterion}-n={n}.csv',
+    #                          index=False)
 
     if AbsDiffRate in ['Absolute', 'Difference', 'Change(%)']:
 
-        _, TNORM, TNORM_in_projection = get_TNORM_plus(ts_norm_countries,
-                                                       timehorizon=timehorizon)
+        # _, TNORM, TNORM_in_projection = get_TNORM_plus(ts_norm_countries,
+        #                                                timehorizon=timehorizon)
+
+        # print(TNORM_in_projection.set_index(['country']).loc['Germany'])
+        TNORM = ts_norm_countries
 
         fig = plot_cases_plus(TNORM,
-                              TNORM_in_projection,
                               type,
                               TYPES[type],
                               AbsDiffRate,
                               show_projection=show_projection)
+        # st.plotly_chart(fig)
 
     fig.update_layout(legend={'title': {'text': 'Country: Day zero'}})
     # st.write(fig.layout)

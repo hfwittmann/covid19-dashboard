@@ -185,66 +185,12 @@ def compose_walking_forward(TNORM,
 
 
 # %%
-#
-# @jit(nopython=True)
-@fancy_cache(ttl=86400 / 4, unique_to_session=False, persist=True)
-def get_TNORM_plus(TNORM, timehorizon):
-
-    # countries = blub['']
-    TNORM_in_projection_list = list()  # plus prediction
-
-    for country, _ in TNORM.groupby(['country']):
-        # print(country)
-
-        # country = 'Italy'
-        TNORM_in_projection = compose_walking_forward(
-            TNORM,
-            forecastvariable='Change(%)_3',
-            country=country,
-            timehorizon=timehorizon)
-
-        TNORM_in_projection_list.append(TNORM_in_projection[[
-            'T_norm_days', 'country', 'country_T_0', 'projected_change(%)',
-            'projected_cases', 'date', 'type'
-        ]])
-        pass
-
-    TNORM_in_projection = pd.concat(TNORM_in_projection_list, axis=0)
-    # print(TNORM_in_projection.set_index(['country']).loc['Germany'])
-
-    TNORM['measured_or_projected'] = 'measured'
-    TNORM_in_projection['measured_or_projected'] = 'projected'
-
-    TNORM_in_projection.rename(axis=1,
-                               mapper={
-                                   'projected_change(%)': 'change',
-                                   'projected_cases': 'cases'
-                               },
-                               inplace=True)
-
-    TNORM_in_projection['Absolute'] = TNORM_in_projection['cases']
-    TNORM_in_projection['Change(%)'] = TNORM_in_projection['change']
-
-    TNORM_in_projection = TNORM_in_projection.assign(
-        Difference=TNORM_in_projection[['Absolute']].diff())
-
-    TNORM_plus = pd.concat([TNORM, TNORM_in_projection], axis=0)
-
-    return TNORM_plus, TNORM, TNORM_in_projection
 
 
-# %%
-
-
-def plot_cases_plus(TNORM, TNORM_in_projection, type, Types_type, AbsDiffRate,
-                    show_projection):
+def plot_cases_plus(TNORM, type, Types_type, AbsDiffRate, show_projection):
 
     TNORM = TNORM.copy()
     TNORM['date'] = TNORM['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
-
-    TNORM_in_projection = TNORM_in_projection.copy()
-    TNORM_in_projection['date'] = TNORM_in_projection['date'].apply(
-        lambda x: x.strftime('%Y-%m-%d'))
 
     fig = px.scatter(TNORM,
                      x='T_norm_days',
@@ -265,38 +211,5 @@ def plot_cases_plus(TNORM, TNORM_in_projection, type, Types_type, AbsDiffRate,
         string=trace.hovertemplate)))
 
     # print(fig.data[-1])
-
-    if show_projection:
-        for ix, (country, group) in enumerate(
-                TNORM_in_projection.groupby('country_T_0')):
-
-            # group = group.assign(Difference=group[['Absolute']].diff())
-
-            color = px.colors.qualitative.Plotly[ix % ncolors]
-            fig.add_scatter(
-                x=group['T_norm_days'],
-                y=group[AbsDiffRate],
-                name='',
-                text='blub',
-                marker=dict(
-                    symbol='diamond',
-                    opacity=0.5,
-                    # size=20,
-                    color=color,
-                    line=dict(width=1, color='black'),
-                ))
-
-            fig.data[-1].mode = 'markers'
-            fig.data[-1].legendgroup = country
-            fig.data[-1].showlegend = False
-
-            # print(group.date)
-            fig.data[-1].hovertext = group['date']
-
-            # print(fig.data[-1])
-
-            fig.data[
-                -1].hovertemplate = f'<b>Projection {country}</b><br><br>T_norm_days=%{{x}}<br>{AbsDiffRate}=%{{y}}<br>date=%{{hovertext}}'
-            fig.update_layout(title_text=f'<b>{Types_type}</b>')
 
     return fig
