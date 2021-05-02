@@ -1,0 +1,77 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file for the backend of the covid19-dashboard
+  version: "1.0.0"
+  title: Swagger Timeseries
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+  /getCountries:
+    get:
+      operationId: "tier1.data.wrap_getCountries"
+      tags:
+        - countries
+      summary: "Countries list from github"
+      description: "Get the data as supplied by https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv"
+      responses:
+        200:
+          description: "Successful read countries list from github"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+  /getTimeseries_T/{type}:
+    get:
+      operationId: "tier1.data.wrap_getData"
+      tags:
+        - "timeseries_T"
+      summary: "Timeseries data, both Death and Confirmeds, supported by the covid app"
+      description: "Get the data as supplied by Johns Hopkins University, , augmented with a normalised time, with T0 as defined by the number of acculated Death=n"
+      parameters:
+        - name: type
+          in: path
+          description: timeseries type, one of Death, Confirmed
+          type: string
+          required: True
+      responses:
+        200:
+          description: "Successful read timeseries operation (from Johns Hopkins)"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+  /plot/{type}/{plottype}:
+    get:
+      operationId: "tier1.plot.wrap_getPlot"
+      tags:
+        - "timeseries_T"
+      summary: "Timeseries data, both Death and Confirmeds, supported by the covid app"
+      description: "Get the data as supplied by Johns Hopkins University, , augmented with a normalised time, with T0 as defined by the number of acculated Death=n"
+      parameters:
+        - name: type
+          in: path
+          description: timeseries type, one of Death, Confirmed
+          type: string
+          required: True
+        - name: plottype
+          in: path
+          description: plottype such as timeseries or chloropleth (ie a map)
+          type: string
+          required: True
+      responses:
+        200:
+          description: "Successful read selection_plot operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                data:
+                  type: "array"
+                layout:
+                  type: "array"
