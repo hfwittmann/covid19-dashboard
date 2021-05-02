@@ -1,0 +1,116 @@
+DateFormat: '%Y-%B-%d' # 2020-March-22
+DateFormatShort: '%b-%d' # March-22
+DateFormatList: '%Y-%m-%d' # March-22
+
+cmap_marker: jet
+cmap_marker_line: prism
+
+mymod: 14
+
+TYPES:
+    Confirmed: Confirmed
+    Death: Death
+    Death_Rate: Death Rate<br>Deaths per Confirmed Cases (%)
+
+Titles:
+    Absolute: ...
+    Difference: Difference to previous day
+
+# Spaces:
+#     Absolute: lambda: np.logspace(-5, 0, len(Colors))
+#     Difference: lambda: np.logspace(-5, 0, len(Colors))
+#     Change(%): lambda: np.linspace(0, 1, len(Colors))
+
+Color_continous_scale:
+    Confirmed: hot
+    Death: hot
+    Death_Rate: rdbu
+
+Reverse_colors:
+    Absolute:
+        Confirmed: True
+        Death: True
+        Death_Rate: True
+
+
+    Difference:
+        Confirmed: True
+        Death: True
+        Death_Rate: True
+
+
+    Change(%):
+        Confirmed: True
+        Death: True
+        Death_Rate: True
+
+
+
+Override_ColorRanges:
+    Absolute:
+        Confirmed: {}
+        Death: {}
+        Death_Rate: {}
+
+
+    Difference:
+        Confirmed: {}
+        Death: {}
+        Death_Rate: {}
+
+    Change(%):
+        Confirmed:
+            range_color: [0,1]
+        Death:
+            range_color: [0,1]
+        Death_Rate:
+            range_color: [-1,1]
+
+
+
+
+Formats:
+    Absolute:
+        Confirmed: .0f
+        Death: .0f
+        Death_Rate: .1%%
+
+
+    Difference:
+        Confirmed: .0f
+        Death: .0f
+        Death_Rate: .1%%
+
+
+    Change(%):
+        Confirmed: '%%'
+        Death: '%%'
+        Death_Rate: '%%'
+
+
+
+ColorBar:
+    Absolute:
+        Confirmed: ''
+        Death: ''
+        Death_Rate: ''
+
+
+    Difference:
+        Confirmed: ''
+        Death: ''
+        Death_Rate: ''
+
+
+    Change(%):
+        Confirmed: ''
+        Death: ''
+        Death_Rate: ''
+
+
+
+    # ColorBar = {
+    #     'Absolute': 'Absolute Number',
+    #     'Difference': 'Difference to pr. day',
+    #     'Change(%)': 'Change(%) to pr. day',
+    # }

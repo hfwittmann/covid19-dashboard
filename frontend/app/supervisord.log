@@ -1,0 +1,175 @@
+2021-04-21 16:16:11,658 INFO Set uid to user 0 succeeded
+2021-04-21 16:16:11,663 INFO supervisord started with pid 1
+2021-04-21 16:16:12,666 INFO spawned: 'streamlit' with pid 10
+2021-04-21 16:16:13,670 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 16:16:43,188 WARN received SIGTERM indicating exit request
+2021-04-21 16:16:43,189 INFO waiting for streamlit to die
+2021-04-21 16:16:44,190 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 16:16:45,055 INFO Set uid to user 0 succeeded
+2021-04-21 16:16:45,061 INFO supervisord started with pid 1
+2021-04-21 16:16:46,065 INFO spawned: 'streamlit' with pid 10
+2021-04-21 16:16:47,068 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 16:32:27,809 WARN received SIGTERM indicating exit request
+2021-04-21 16:32:27,809 INFO waiting for streamlit to die
+2021-04-21 16:32:27,810 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 16:32:28,620 INFO Set uid to user 0 succeeded
+2021-04-21 16:32:28,625 INFO supervisord started with pid 1
+2021-04-21 16:32:29,628 INFO spawned: 'streamlit' with pid 10
+2021-04-21 16:32:30,630 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 16:34:11,487 WARN received SIGTERM indicating exit request
+2021-04-21 16:34:11,487 INFO waiting for streamlit to die
+2021-04-21 16:34:12,488 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 16:34:21,982 INFO Set uid to user 0 succeeded
+2021-04-21 16:34:21,987 INFO supervisord started with pid 1
+2021-04-21 16:34:22,990 INFO spawned: 'streamlit' with pid 9
+2021-04-21 16:34:23,991 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 16:35:24,378 WARN received SIGTERM indicating exit request
+2021-04-21 16:35:24,378 INFO waiting for streamlit to die
+2021-04-21 16:35:25,380 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 16:53:48,693 INFO Set uid to user 0 succeeded
+2021-04-21 16:53:48,699 INFO supervisord started with pid 1
+2021-04-21 16:53:49,701 INFO spawned: 'streamlit' with pid 10
+2021-04-21 16:53:50,703 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 16:54:19,411 WARN received SIGTERM indicating exit request
+2021-04-21 16:54:19,412 INFO waiting for streamlit to die
+2021-04-21 16:54:20,413 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 17:17:05,656 INFO Set uid to user 0 succeeded
+2021-04-21 17:17:05,662 INFO supervisord started with pid 1
+2021-04-21 17:17:06,664 INFO spawned: 'streamlit' with pid 10
+2021-04-21 17:17:07,665 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 17:17:45,370 WARN received SIGTERM indicating exit request
+2021-04-21 17:17:45,370 INFO waiting for streamlit to die
+2021-04-21 17:17:45,371 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 19:41:42,025 INFO Set uid to user 0 succeeded
+2021-04-21 19:41:42,033 INFO supervisord started with pid 1
+2021-04-21 19:41:43,036 INFO spawned: 'streamlit' with pid 9
+2021-04-21 19:41:44,038 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 19:42:43,331 WARN received SIGTERM indicating exit request
+2021-04-21 19:42:43,331 INFO waiting for streamlit to die
+2021-04-21 19:42:44,333 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 19:43:12,885 INFO Set uid to user 0 succeeded
+2021-04-21 19:43:12,894 INFO supervisord started with pid 1
+2021-04-21 19:43:13,896 INFO spawned: 'streamlit' with pid 10
+2021-04-21 19:43:14,899 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 19:49:06,984 WARN received SIGTERM indicating exit request
+2021-04-21 19:49:06,985 INFO waiting for streamlit to die
+2021-04-21 19:49:07,987 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 20:02:11,549 INFO Set uid to user 0 succeeded
+2021-04-21 20:02:11,559 INFO supervisord started with pid 1
+2021-04-21 20:02:12,562 INFO spawned: 'streamlit' with pid 9
+2021-04-21 20:02:13,564 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 20:05:29,412 WARN received SIGTERM indicating exit request
+2021-04-21 20:05:29,412 INFO waiting for streamlit to die
+2021-04-21 20:05:30,414 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 20:05:43,302 INFO Set uid to user 0 succeeded
+2021-04-21 20:05:43,311 INFO supervisord started with pid 1
+2021-04-21 20:05:44,314 INFO spawned: 'streamlit' with pid 10
+2021-04-21 20:05:45,316 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 20:07:02,281 WARN received SIGTERM indicating exit request
+2021-04-21 20:07:02,282 INFO waiting for streamlit to die
+2021-04-21 20:07:03,284 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-21 20:10:47,610 INFO Set uid to user 0 succeeded
+2021-04-21 20:10:47,618 INFO supervisord started with pid 1
+2021-04-21 20:10:48,621 INFO spawned: 'streamlit' with pid 9
+2021-04-21 20:10:49,623 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-21 20:12:12,733 WARN received SIGTERM indicating exit request
+2021-04-21 20:12:12,734 INFO waiting for streamlit to die
+2021-04-21 20:12:13,735 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-22 07:07:01,842 INFO Set uid to user 0 succeeded
+2021-04-22 07:07:01,852 INFO supervisord started with pid 1
+2021-04-22 07:07:02,854 INFO spawned: 'streamlit' with pid 9
+2021-04-22 07:07:03,857 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-22 07:16:17,462 WARN received SIGTERM indicating exit request
+2021-04-22 07:16:17,463 INFO waiting for streamlit to die
+2021-04-22 07:16:18,465 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-25 17:18:00,799 INFO Set uid to user 0 succeeded
+2021-04-25 17:18:00,806 INFO supervisord started with pid 1
+2021-04-25 17:18:01,809 INFO spawned: 'streamlit' with pid 10
+2021-04-25 17:18:02,812 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-25 17:21:08,280 INFO reaped unknown pid 58
+2021-04-25 17:21:35,431 INFO reaped unknown pid 405
+2021-04-25 18:48:45,309 INFO reaped unknown pid 32141
+2021-04-26 11:22:51,437 INFO reaped unknown pid 18636
+2021-04-26 11:22:51,439 INFO reaped unknown pid 26888
+2021-04-26 15:12:08,331 INFO Set uid to user 0 succeeded
+2021-04-26 15:12:08,337 INFO supervisord started with pid 1
+2021-04-26 15:12:09,339 INFO spawned: 'streamlit' with pid 10
+2021-04-26 15:12:10,341 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 16:27:23,750 INFO reaped unknown pid 77
+2021-04-26 16:28:31,724 INFO reaped unknown pid 785
+2021-04-26 16:28:43,021 INFO reaped unknown pid 925
+2021-04-26 16:30:05,934 INFO reaped unknown pid 1085
+2021-04-26 17:12:46,693 INFO reaped unknown pid 18869
+2021-04-26 17:12:46,731 INFO reaped unknown pid 14358
+2021-04-26 17:12:46,738 INFO reaped unknown pid 9643
+2021-04-26 17:16:26,952 INFO Set uid to user 0 succeeded
+2021-04-26 17:16:26,960 INFO supervisord started with pid 1
+2021-04-26 17:16:27,962 INFO spawned: 'streamlit' with pid 9
+2021-04-26 17:16:28,963 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 17:17:07,822 INFO reaped unknown pid 63
+2021-04-26 19:05:16,052 INFO Set uid to user 0 succeeded
+2021-04-26 19:05:16,059 INFO supervisord started with pid 1
+2021-04-26 19:05:17,061 INFO spawned: 'streamlit' with pid 9
+2021-04-26 19:05:18,063 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:05:19,837 INFO reaped unknown pid 49
+2021-04-26 19:26:35,633 INFO Set uid to user 0 succeeded
+2021-04-26 19:26:35,638 INFO supervisord started with pid 1
+2021-04-26 19:26:36,641 INFO spawned: 'streamlit' with pid 9
+2021-04-26 19:26:37,642 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:26:39,981 INFO reaped unknown pid 51
+2021-04-26 19:26:57,835 WARN received SIGTERM indicating exit request
+2021-04-26 19:26:57,836 INFO waiting for streamlit to die
+2021-04-26 19:26:57,837 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-26 19:27:25,371 INFO Set uid to user 0 succeeded
+2021-04-26 19:27:25,375 INFO supervisord started with pid 1
+2021-04-26 19:27:26,377 INFO spawned: 'streamlit' with pid 9
+2021-04-26 19:27:27,378 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:27:32,562 INFO reaped unknown pid 51
+2021-04-26 19:28:02,172 WARN received SIGTERM indicating exit request
+2021-04-26 19:28:02,173 INFO waiting for streamlit to die
+2021-04-26 19:28:13,788 INFO Set uid to user 0 succeeded
+2021-04-26 19:28:13,794 INFO supervisord started with pid 1
+2021-04-26 19:28:14,796 INFO spawned: 'streamlit' with pid 10
+2021-04-26 19:28:15,797 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:28:21,200 INFO reaped unknown pid 52
+2021-04-26 19:28:44,196 WARN received SIGTERM indicating exit request
+2021-04-26 19:28:44,197 INFO waiting for streamlit to die
+2021-04-26 19:28:44,197 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-26 19:28:56,042 INFO Set uid to user 0 succeeded
+2021-04-26 19:28:56,048 INFO supervisord started with pid 1
+2021-04-26 19:28:57,050 INFO spawned: 'streamlit' with pid 9
+2021-04-26 19:28:58,052 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:29:12,464 INFO reaped unknown pid 54
+2021-04-26 19:29:17,911 INFO reaped unknown pid 224
+2021-04-26 19:29:24,080 WARN received SIGTERM indicating exit request
+2021-04-26 19:29:24,080 INFO waiting for streamlit to die
+2021-04-26 19:30:41,167 INFO Set uid to user 0 succeeded
+2021-04-26 19:30:41,172 INFO supervisord started with pid 1
+2021-04-26 19:30:42,174 INFO spawned: 'streamlit' with pid 10
+2021-04-26 19:30:43,175 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:31:06,663 WARN received SIGTERM indicating exit request
+2021-04-26 19:31:06,664 INFO waiting for streamlit to die
+2021-04-26 19:31:07,666 INFO stopped: streamlit (terminated by SIGTERM)
+2021-04-26 19:31:20,120 INFO Set uid to user 0 succeeded
+2021-04-26 19:31:20,127 INFO supervisord started with pid 1
+2021-04-26 19:31:21,129 INFO spawned: 'streamlit' with pid 10
+2021-04-26 19:31:22,131 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:31:55,648 INFO Set uid to user 0 succeeded
+2021-04-26 19:31:55,653 INFO supervisord started with pid 1
+2021-04-26 19:31:56,656 INFO spawned: 'streamlit' with pid 10
+2021-04-26 19:31:57,657 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:32:40,427 INFO Set uid to user 0 succeeded
+2021-04-26 19:32:40,432 INFO supervisord started with pid 1
+2021-04-26 19:32:41,435 INFO spawned: 'streamlit' with pid 9
+2021-04-26 19:32:42,437 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:32:46,257 WARN received SIGTERM indicating exit request
+2021-04-26 19:32:46,258 INFO waiting for streamlit to die
+2021-04-26 19:33:05,770 INFO Set uid to user 0 succeeded
+2021-04-26 19:33:05,775 INFO supervisord started with pid 1
+2021-04-26 19:33:06,777 INFO spawned: 'streamlit' with pid 9
+2021-04-26 19:33:07,779 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-04-26 19:33:30,334 INFO reaped unknown pid 52
+2021-04-28 12:21:30,994 INFO Set uid to user 0 succeeded
+2021-04-28 12:21:31,000 INFO supervisord started with pid 1
+2021-04-28 12:21:32,003 INFO spawned: 'streamlit' with pid 10
+2021-04-28 12:21:33,005 INFO success: streamlit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
