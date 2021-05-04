@@ -1,4 +1,5 @@
 environs
+matplotlib
 plotly
 streamlit
 pyyaml

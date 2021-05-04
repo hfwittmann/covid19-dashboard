@@ -3,13 +3,14 @@ import plotly
 import plotly.express as px
 import pandas as pd
 import numpy as np
+import streamlit as st
 
 from subs.access_backend import get_countries
 from subs.colors import rgba_to_rgb
 from subs.colors import get_countries_colors
 
-
-def map_plot(mapdata, y, config):
+@st.cache(allow_output_mutation=True)
+def map_plot(mapdata, y, mydate, config):
 
     #print(y)
     assert y in ['cases', '7d_per_100000', 'trend'], f'{y}'
@@ -53,8 +54,8 @@ def map_plot(mapdata, y, config):
 
     return fig_performance
 
-
-def timeseries_plot(timeseries_data, y, config):
+@st.cache(allow_output_mutation=True)
+def timeseries_plot(timeseries_data, y, mydate, config):
 
     # print(y)
     assert y in [
@@ -98,7 +99,7 @@ def timeseries_plot(timeseries_data, y, config):
     return fig_performance
 
 
-def getPlot(plottype, timeseries_data, y, status, config):
+def getPlot(plottype, timeseries_data, y, status, mydate, config):
 
     plots = {
         'timeseries': timeseries_plot,
@@ -108,5 +109,5 @@ def getPlot(plottype, timeseries_data, y, status, config):
 
     return {
         'status': status,
-        'plot': plots[plottype](timeseries_data, y, config)
+        'plot': plots[plottype](timeseries_data, y, mydate, config)
     }

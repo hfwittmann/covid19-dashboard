@@ -20,7 +20,35 @@ class Task_getData(TaskJson):
 
     def run(self):
 
-        out = getTimeseries_T(self.type)
+        timeseries = getTimeseries_T(self.type)
+        self.save(timeseries)
+
+@d6tflow.requires(Task_getData)
+class Task_getDates(TaskJson):
+
+    runDate = d6tflow.DateParameter()
+    type = d6tflow.Parameter()
+
+    def run(self):
+        input = self.input.load()
+
+        status, timeseries = input['status'], input['timeseries']
+
+        if status == 'failure':
+            self.save({'status': status, 'dates': None})
+            return None
+
+
+
+        timeseries = pd.read_json(timeseries)
+        options_date_map = sorted(timeseries['date'].unique(), reverse=True)
+
+
+        out =  {
+            'timeseries': options_date_map.to_json(),
+            'status': 'success'
+        }
+
         self.save(out)
 
 

@@ -4,7 +4,8 @@ FROM python:3.8
 RUN apt update && apt-get install -y supervisor
 RUN pip3 install pip-tools
 
-COPY requirements /requirements
+RUN mkdir /requirements
+COPY requirements/.in /requirements/
 RUN pip-compile /requirements/.in --output-file /requirements/.txt
 RUN pip install -r /requirements/.txt
 

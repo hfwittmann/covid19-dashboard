@@ -46,6 +46,26 @@ paths:
             type: "array"
             items:
               type: "string"
+  /getDates/{type}:
+    get:
+      operationId: "tier1.data.wrap_getDates"
+      tags:
+        - dates
+      summary: Dates available in Timeseries data
+      description: Dates available in Timeseries data
+      parameters:
+        - name: type
+          in: path
+          description: Get sequence of dates, in descending order
+          type: string
+          required: True
+      responses:
+        200:
+          description: "Successful read countries list from github"
+          schema:
+            type: "array"
+            items:
+              type: "string"
   /plot/{type}/{plottype}:
     get:
       operationId: "tier1.plot.wrap_getPlot"

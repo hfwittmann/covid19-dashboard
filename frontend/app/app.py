@@ -96,10 +96,13 @@ if S['Visualisation'] == 'Timeseries':
                     timeseries_selection = timeseries[timeseries.country.isin(
                         S['Countries'])]
 
+                    lastdate = options_date_map[0]
+
                     _ = getPlot('timeseries',
                                 timeseries_selection,
                                 diff,
                                 None,
+                                lastdate,
                                 config=config)
                     fig = _['plot']
 
@@ -124,6 +127,7 @@ if S['Visualisation'] == 'Maps' and type in S['ConfirmedDeath']:
                     mapdata,
                     '7d_per_100000',
                     None,
+                    chosendate,
                     config=config)
         fig = _['plot']
         st.plotly_chart(fig, use_container_width=True)

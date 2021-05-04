@@ -45,7 +45,6 @@ Reverse_colors:
         Death_Rate: True
 
 
-
 Override_ColorRanges:
     Absolute:
         Confirmed: {}
@@ -65,8 +64,6 @@ Override_ColorRanges:
             range_color: [0,1]
         Death_Rate:
             range_color: [-1,1]
-
-
 
 
 Formats:
