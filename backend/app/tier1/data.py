@@ -28,6 +28,12 @@ def wrap_getDates(type='Death'):
 
 if __name__ == '__main__':
 
+    outSuccess = wrap_getCountries()
+
+    print()
+    print('Should be successful !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    print(outSuccess['status'])
+
     outSuccess = wrap_getData(type='Death')
 
     print()

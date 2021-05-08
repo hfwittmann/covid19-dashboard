@@ -12,11 +12,41 @@ with open('config/run.yml', 'r') as f:
     config_run = yaml.safe_load(f)
 
 
+def myclean(D, column='COUNTRY'):
+
+    # try:
+    #     print(D.head())
+    #     D = D.loc[:, ~D.columns.str.contains('^Unnamed')]
+    # except Exception as e:
+    #     print(e)
+
+    D[column]=D[column].apply(lambda x:x.split('[')[0])
+
+    # remove () brackets ie Niue (New Zealand) becomes Niue
+    D[column]=D[column].apply(lambda x:x.split('(')[0].strip())
+
+    D[column] = D[column].replace({
+        'US':
+        'United States',
+        'Czechia':
+        'Czech Republic',
+        'Korea, South': 'South Korea',
+        'Korea, North': 'North Korea',
+        "Cote d'Ivoire": "Ivory Coast",
+        # "Greenland (Denmark)": "Greenland",
+        "Burma":"Myanmar"
+    })
+
+    return None
+
+
+
 def get_countries():
     countries = pd.read_csv(
         'https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv'
     )
 
+    myclean(countries,'COUNTRY')
     countries_population = get_countries_population()
 
     countries = pd.merge(countries, countries_population, on='COUNTRY')
@@ -32,13 +62,8 @@ def get_countries_population():
     for constituents in tables:
         if 'Change' in constituents.columns: break
 
-    constituents = constituents.loc[:, ~constituents.columns.str.contains('^Unnamed')]
-
-    # remove [] brackets ie China[a] becomes China
-    constituents['COUNTRY']=constituents['Country/Territory'].apply(lambda x:x.split('[')[0])
-
-    # remove () brackets ie Niue (New Zealand) becomes Niue
-    constituents['COUNTRY']=constituents['COUNTRY'].apply(lambda x:x.split('(')[0])
+    constituents.rename({'Country/Territory':'COUNTRY'}, axis=1, inplace=True)
+    myclean(constituents,'COUNTRY')
 
     return constituents
 
@@ -74,13 +99,9 @@ def load_timeseries(name):
 
         # in the John Hopkins Data Set the USA is called US, so we have to do some renaming using replace
         # https://stackoverflow.com/questions/19919891/is-there-a-way-to-do-this-series-map-in-place
-        df['Country/Region'] = df['Country/Region'].replace({
-            'US':
-            'United States',
-            'Czechia':
-            'Czech Republic'
-        })
 
+        df.rename({'Country/Region':'country'}, axis=1, inplace=True)
+        myclean(df,'country')
         # print(sorted(df['Country/Region'].unique()))
 
         df.index = pd.to_datetime(df.index)
@@ -89,6 +110,10 @@ def load_timeseries(name):
         # Move HK to country level
         df.loc[df.state == 'Hong Kong', 'country'] = 'Hong Kong'
         df.loc[df.state == 'Hong Kong', 'state'] = np.nan
+
+        # Move Greenland to country level
+        df.loc[df.state == 'Greenland', 'country'] = 'Greenland'
+        df.loc[df.state == 'Greenland', 'state'] = np.nan
 
         # Aggregate countries
         df = df.groupby(['country', 'date',
@@ -107,13 +132,7 @@ def load_timeseries(name):
     return df
 
 
-
-
-
-
-
-    return df
-
-
 if __name__ == '__main__':
-    get_countries()
+    print(get_countries().head())
+    print(get_countries_population().head())
+    print(load_timeseries('Death').head())

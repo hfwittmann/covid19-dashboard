@@ -12,13 +12,19 @@ Visualisation:
   options: ['Maps', 'Timeseries']
   default: ['Timeseries']
 
-
 ConfirmedDeath:
   name: ConfirmedDeath
   type: st.sidebar.multiselect
   label: "Select Type"
   options: ['Confirmed', 'Death']
   default: ['Confirmed', 'Death']
+
+Plotlegend:
+  name: Plotlegend
+  type: st.radio
+  label: "Legend"
+  options: ['Hide', 'Show']
+  default: ['Show']
 
 # AbsDiffRate:
 #   name: AbsDiffRate

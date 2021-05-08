@@ -92,6 +92,9 @@ if S['Visualisation'] == 'Timeseries':
 
     if len(S['Countries']) > 0:
 
+        S.place_widget('Plotlegend')
+        hideShow_boolean = {'Hide': False,'Show': True}[S['Plotlegend']]
+
         for mytype in ['Death', 'Confirmed']:
 
             if mytype in S['ConfirmedDeath']:
@@ -99,9 +102,12 @@ if S['Visualisation'] == 'Timeseries':
                 # c1, _, c2 = st.beta_columns((10, 1, 10))
                 # for c, diff in zip((c1, c2), ['7d_per_100000', 'trend']):
 
+
+
                 _, c, _ = st.beta_columns((1, 10, 1))
 
                 if S['Metric'] in ['7d_per_100000', 'trend']:
+
 
                     diff = S['Metric']
                     c.write(mytype + ' ' + diff)
@@ -116,6 +122,8 @@ if S['Visualisation'] == 'Timeseries':
                                 lastdate,
                                 config=config)
                     fig = _['plot']
+
+                    fig.update(layout_showlegend=hideShow_boolean)
 
                     c.plotly_chart(fig, use_container_width=True)
                 #covid19_timeseries(config, S)

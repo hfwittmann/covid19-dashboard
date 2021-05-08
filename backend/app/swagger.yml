@@ -12,6 +12,21 @@ basePath: "/api"
 
 # Paths supported by the server application
 paths:
+  /cron:
+    get:
+      operationId: "run_cron.get_todays_data"
+      tags:
+        - "cron"
+      summary: "Execute the job of getting today's data update"
+      description: "Get countries, data, dates"
+      responses:
+        200:
+          description: "Successful read tickerlist operation"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+
   /getCountries:
     get:
       operationId: "tier1.data.wrap_getCountries"
