@@ -5,7 +5,7 @@ Pretty similar in design to https://github.com/hfwittmann/financial-timeseries-d
 Showing various Covid19 related Timeseries Plots and Maps.
 
 
-This repo is used and described in the following blog post: https://arthought.com/new covid19 dashboard ...
+This repo is used and described in the following blog post: https://arthought.com/new-version-of-covid19-dashboard .
 
 
 To run, simply do the following:
