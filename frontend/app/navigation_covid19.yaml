@@ -1,3 +1,10 @@
+Metric:
+  name: Metric
+  type: st.sidebar.selectbox
+  label: "Select Metric"
+  options: ['7d_per_100000', 'trend']
+  default: ['7d_per_100000']
+
 Visualisation:
   name: Visualisation
   type: st.sidebar.selectbox
@@ -10,22 +17,22 @@ ConfirmedDeath:
   name: ConfirmedDeath
   type: st.sidebar.multiselect
   label: "Select Type"
-  options: ['Death_Rate', 'Confirmed', 'Death']
+  options: ['Confirmed', 'Death']
   default: ['Confirmed', 'Death']
 
-AbsDiffRate:
-  name: AbsDiffRate
-  type: st.sidebar.multiselect
-  label: "Absolute, Difference per Day, or Change(%) per Day"
-  options: ['Absolute', 'Difference', 'Change(%)']
-  default: ['Difference']
+# AbsDiffRate:
+#   name: AbsDiffRate
+#   type: st.sidebar.multiselect
+#   label: "Absolute, Difference per Day, or Change(%) per Day"
+#   options: ['Absolute', 'Difference', 'Change(%)']
+#   default: ['Difference']
 
-Differences:
-  name: Differences # 1d, 7d, 30d
-  type: st.sidebar.multiselect
-  label: "7d Numbers per 100000, Trend = 7d Average/28d Average"
-  options: ['7d_per_100000', 'trend']
-  default: ['7d_per_100000']
+# Differences:
+#   name: Differences # 1d, 7d, 30d
+#   type: st.sidebar.multiselect
+#   label: "7d Numbers per 100000, Trend = 7d Average/28d Average"
+#   options: ['7d_per_100000', 'trend']
+#   default: ['7d_per_100000']
 
 Countries:
   constraint:
@@ -40,15 +47,15 @@ Countries:
   default:
     $:
       ['France', 'Germany', 'Italy', 'United Kingdom']
-Day_Zero:
-  constraint:
-    $:
-      self['Visualisation'] in ['Timeseries','Maps']
-  name: n
-  type: st.sidebar.selectbox
-  label: Select Number of Death to define the day zero, ie the day when the number of Death in a country hit that number.
-  options: [300, 500, 700]
-  default: [500]
+# Day_Zero:
+#   constraint:
+#     $:
+#       self['Visualisation'] in ['Timeseries','Maps']
+#   name: n
+#   type: st.sidebar.selectbox
+#   label: Select Number of Death to define the day zero, ie the day when the number of Death in a country hit that number.
+#   options: [300, 500, 700]
+#   default: [500]
 
 Date:
   constraint:

@@ -30,7 +30,7 @@ class Task_getDates(TaskJson):
     type = d6tflow.Parameter()
 
     def run(self):
-        input = self.input.load()
+        input = self.input().load()
 
         status, timeseries = input['status'], input['timeseries']
 
@@ -42,6 +42,9 @@ class Task_getDates(TaskJson):
 
         timeseries = pd.read_json(timeseries)
         options_date_map = sorted(timeseries['date'].unique(), reverse=True)
+
+        options_date_map = pd.DataFrame({'date':options_date_map})
+        options_date_map['date'] = options_date_map['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
 
 
         out =  {

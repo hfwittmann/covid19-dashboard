@@ -97,7 +97,7 @@ def get_set(widget, session_state, name, key=None, *args, **kwargs):
 
     params = st.experimental_get_query_params()
     if not isinstance(params, dict): params = {}
-    # st.write(params)
+
     selection = widget(**kwargs)
 
     dict_selection = {name: selection}
@@ -106,5 +106,5 @@ def get_set(widget, session_state, name, key=None, *args, **kwargs):
     params = limit_2_allowed_keys(session_state, params)
 
     st.experimental_set_query_params(**params)
-    # st.write(params)
+
     return selection

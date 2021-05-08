@@ -10,10 +10,20 @@ from environs import Env
 env = Env()
 env.read_env()
 
-# @st.cache
+@st.cache(allow_output_mutation=True)
+def get_dates():
+    _ = requests.get(f"http://{env('HOST')}:5000/api/getDates/Confirmed")
+
+    status = _.json()['status']
+    dates = pd.read_json(_.json()['timeseries'])
+
+    dates.date = dates.date.apply(lambda x: x.strftime("%Y-%m-%d"))
+
+    return status, dates
+
+
+@st.cache(allow_output_mutation=True)
 def get_countries():
-
-
     _ = requests.get(f"http://{env('HOST')}:5000/api/getCountries")
 
     status = _.json()['status']
@@ -21,8 +31,12 @@ def get_countries():
 
     return status, countries
 
-# @st.cache
-def get_data(type: str):
+
+@st.cache(allow_output_mutation=True)
+def get_data(_, type: str):
+    '''
+    _ is for the date to signify whether the cache needs to be rebuilt (once a day)
+    '''
     assert type in ['Death', 'Confirmed']
 
 

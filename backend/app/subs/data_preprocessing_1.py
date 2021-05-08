@@ -5,8 +5,6 @@ from pandas.api.types import is_datetime64_any_dtype
 from pandas.api.types import is_integer_dtype
 
 import numpy as np
-import plotly
-import plotly.express as px
 import yaml
 
 with open('config/run.yml', 'r') as f:

@@ -9,6 +9,6 @@ lxml
 numpy==1.19.3
 pandas
 pandas_datareader
-plotly
+# plotly
 pyyaml
-streamlit
+# streamlit

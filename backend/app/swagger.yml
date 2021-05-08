@@ -56,42 +56,42 @@ paths:
       parameters:
         - name: type
           in: path
-          description: Get sequence of dates, in descending order
+          description: timeseries type, one of Death, Confirmed
           type: string
           required: True
       responses:
         200:
-          description: "Successful read countries list from github"
+          description: "Successful dates sequence"
           schema:
             type: "array"
             items:
               type: "string"
-  /plot/{type}/{plottype}:
-    get:
-      operationId: "tier1.plot.wrap_getPlot"
-      tags:
-        - "timeseries_T"
-      summary: "Timeseries data, both Death and Confirmeds, supported by the covid app"
-      description: "Get the data as supplied by Johns Hopkins University, , augmented with a normalised time, with T0 as defined by the number of acculated Death=n"
-      parameters:
-        - name: type
-          in: path
-          description: timeseries type, one of Death, Confirmed
-          type: string
-          required: True
-        - name: plottype
-          in: path
-          description: plottype such as timeseries or chloropleth (ie a map)
-          type: string
-          required: True
-      responses:
-        200:
-          description: "Successful read selection_plot operation"
-          schema:
-            type: "array"
-            items:
-              properties:
-                data:
-                  type: "array"
-                layout:
-                  type: "array"
+  # /plot/{type}/{plottype}:
+  #   get:
+  #     operationId: "tier1.plot.wrap_getPlot"
+  #     tags:
+  #       - "timeseries_T"
+  #     summary: "Timeseries data, both Death and Confirmeds, supported by the covid app"
+  #     description: "Get the data as supplied by Johns Hopkins University, , augmented with a normalised time, with T0 as defined by the number of acculated Death=n"
+  #     parameters:
+  #       - name: type
+  #         in: path
+  #         description: timeseries type, one of Death, Confirmed
+  #         type: string
+  #         required: True
+  #       - name: plottype
+  #         in: path
+  #         description: plottype such as timeseries or chloropleth (ie a map)
+  #         type: string
+  #         required: True
+  #     responses:
+  #       200:
+  #         description: "Successful read selection_plot operation"
+  #         schema:
+  #           type: "array"
+  #           items:
+  #             properties:
+  #               data:
+  #                 type: "array"
+  #               layout:
+  #                 type: "array"

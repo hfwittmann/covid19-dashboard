@@ -39,7 +39,7 @@ def get_set_selection(widget,
 
     params = st.experimental_get_query_params()
     if not isinstance(params, dict): params = {}
-    # st.write(params)
+
     default_choice = params[name][0] if name in params else -1
     default_index = get_index(options, default_choice)
     selection = widget(label=label,
@@ -52,7 +52,7 @@ def get_set_selection(widget,
     params = {**params, **dict_selection}
 
     st.experimental_set_query_params(**params)
-    # st.write(params)
+
     return selection
 
 
@@ -72,7 +72,7 @@ def get_set_multiselection(widget,
 
     params = st.experimental_get_query_params()
     if not isinstance(params, dict): params = {}
-    # st.write(params)
+
     default_choices = params[name] if name in params else default_choices
     # default_indices = get_indices(options, default_choices)
     selections = widget(label=label,
@@ -84,5 +84,5 @@ def get_set_multiselection(widget,
     params = {**params, **dict_selections}
 
     st.experimental_set_query_params(**params)
-    # st.write(params)
+
     return selections
