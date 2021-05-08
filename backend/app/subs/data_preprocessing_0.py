@@ -33,8 +33,11 @@ def myclean(D, column='COUNTRY'):
         'Korea, South': 'South Korea',
         'Korea, North': 'North Korea',
         "Cote d'Ivoire": "Ivory Coast",
-        # "Greenland (Denmark)": "Greenland",
-        "Burma":"Myanmar"
+        "Burma":"Myanmar",
+        "Congo":"Congo (Brazzaville)",
+        "DR Congo":"Congo (Kinshasa)",
+        "Congo, Republic of the": "Congo (Brazzaville)",
+        "Congo, Democratic Republic of the": "Congo (Kinshasa)"
     })
 
     return None
