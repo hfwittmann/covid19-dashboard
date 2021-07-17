@@ -6,10 +6,11 @@ def get_todays_data():
 
     try:
         _ = wrap_getCountries()
-        _ = wrap_getData()
+        _ = wrap_getData(type='Death')
+        _ = wrap_getData(type='Confirmed')
         _ = wrap_getDates()
 
-        return 'get_todays_data_succeded'
+        return 'get_todays_data_succeeded'
 
     except Exception as e:
 

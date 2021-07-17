@@ -32,12 +32,14 @@ _, dates = get_dates()
 options_date_map = sorted(dates['date'].unique(), reverse=True)
 lastdate = options_date_map[0]
 
-_, countries = get_countries()
-_, T['Confirmed'] = get_data(lastdate, 'Confirmed')
-_, T['Death'] = get_data(lastdate, 'Death')
+try:
+    _, countries = get_countries()
+    countries['GDP/capita'] = countries['GDP (BILLIONS)']/countries['Population(1 July 2019)']
+    _, T['Confirmed'] = get_data(lastdate, 'Confirmed')
+    _, T['Death'] = get_data(lastdate, 'Death')
+except Exception as e:
+    pass
 
-
-countries['GDP/capita'] = countries['GDP (BILLIONS)']/countries['Population(1 July 2019)']
 # st.write(countries)
 
 
@@ -87,7 +89,6 @@ S.place_widget('Date')
 # if S['Visualisation'] == 'Maps':
 #     covid19_maps(config, S)
 
-
 if S['Visualisation'] == 'Timeseries':
 
     if len(S['Countries']) > 0:
@@ -133,22 +134,26 @@ if S['Visualisation'] == 'Timeseries':
 
                 # st.plotly_chart(fig, use_container_width=True)
 
-if S['Visualisation'] == 'Maps' and mytype in S['ConfirmedDeath']:
+if S['Visualisation'] == 'Maps':
 
     for mytype in ['Death', 'Confirmed']:
-        st.write(mytype)
-        timeseries = T[mytype]
-        dates_str = timeseries.date.apply(lambda x: x.strftime("%Y-%m-%d"))
 
-        chosendate = S['Datecode']
-        mapdata=timeseries.loc[dates_str==chosendate]
+        if mytype in S['ConfirmedDeath']:
 
-        if S['Metric'] in ['7d_per_100000', 'trend']:
-            _ = getPlot('map',
-                        mapdata,
-                        S['Metric'],
-                        None,
-                        chosendate,
-                        config=config)
-            fig = _['plot']
-            st.plotly_chart(fig, use_container_width=True)
+            st.write(mytype)
+
+            timeseries = T[mytype]
+            dates_str = timeseries.date.apply(lambda x: x.strftime("%Y-%m-%d"))
+
+            chosendate = S['Datecode']
+            mapdata=timeseries.loc[dates_str==chosendate]
+
+            if S['Metric'] in ['7d_per_100000', 'trend']:
+                _ = getPlot('map',
+                            mapdata,
+                            S['Metric'],
+                            None,
+                            chosendate,
+                            config=config)
+                fig = _['plot']
+                st.plotly_chart(fig, use_container_width=True)

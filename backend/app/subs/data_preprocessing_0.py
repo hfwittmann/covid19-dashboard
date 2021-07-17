@@ -12,8 +12,9 @@ with open('config/run.yml', 'r') as f:
     config_run = yaml.safe_load(f)
 
 
-def myclean(D, column='COUNTRY'):
+def myclean(D, column:str):
 
+    assert column.upper() in ['COUNTRY', 'CODE']
     # try:
     #     print(D.head())
     #     D = D.loc[:, ~D.columns.str.contains('^Unnamed')]
@@ -25,20 +26,27 @@ def myclean(D, column='COUNTRY'):
     # remove () brackets ie Niue (New Zealand) becomes Niue
     D[column]=D[column].apply(lambda x:x.split('(')[0].strip())
 
-    D[column] = D[column].replace({
-        'US':
-        'United States',
-        'Czechia':
-        'Czech Republic',
-        'Korea, South': 'South Korea',
-        'Korea, North': 'North Korea',
-        "Cote d'Ivoire": "Ivory Coast",
-        "Burma":"Myanmar",
-        "Congo":"Congo (Brazzaville)",
-        "DR Congo":"Congo (Kinshasa)",
-        "Congo, Republic of the": "Congo (Brazzaville)",
-        "Congo, Democratic Republic of the": "Congo (Kinshasa)"
-    })
+
+    if column.upper() == 'COUNTRY':
+        D[column] = D[column].replace({
+            'US':
+            'United States',
+            'Czechia':
+            'Czech Republic',
+            'Korea, South': 'South Korea',
+            'Korea, North': 'North Korea',
+            "Cote d'Ivoire": "Ivory Coast",
+            "Burma":"Myanmar",
+            "Congo":"Congo (Brazzaville)",
+            "DR Congo":"Congo (Kinshasa)",
+            "Congo, Republic of the": "Congo (Brazzaville)",
+            "Congo, Democratic Republic of the": "Congo (Kinshasa)"
+        })
+
+    if column.upper() == 'CODE':
+        D[column].replace({
+            'United Kingdom':'GBR'
+        })
 
     return None
 
@@ -61,11 +69,17 @@ def get_countries_population():
     url = url = "https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)"
     # url = "https://en.wikipedia.org/wiki/DAX"
     tables = pd.read_html(url)
+    # print('tables:', tables)
 
-    for constituents in tables:
+    for ix, constituents in enumerate(tables):
+        # print()
+        # print()
+        # print(ix)
+        # print()
+        # print('constituents:', constituents)
         if 'Change' in constituents.columns: break
 
-    constituents.rename({'Country/Territory':'COUNTRY'}, axis=1, inplace=True)
+    constituents.rename({'Country/Area':'COUNTRY'}, axis=1, inplace=True)
     myclean(constituents,'COUNTRY')
 
     return constituents
@@ -136,6 +150,14 @@ def load_timeseries(name):
 
 
 if __name__ == '__main__':
+
+    # countries = pd.read_csv(
+    #     'https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv'
+    # )
+    # print(countries)
+    print(get_countries_population())
+
     print(get_countries().head())
     print(get_countries_population().head())
     print(load_timeseries('Death').head())
+    print(load_timeseries('Confirmed').head())

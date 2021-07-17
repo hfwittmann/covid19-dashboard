@@ -61,9 +61,9 @@ if __name__ == '__main__':
     runDate = date.today()
 
     ### produce success
-    d6tflow.run(Task_getData(runDate=runDate, type='Death'))
+    d6tflow.run(Task_getData(runDate=runDate, type='Confirmed'))
     outSuccess = Task_getData(runDate=runDate,
-                                  type='Death').output().load()
+                                  type='Confirmed').output().load()
 
 
     print()
@@ -71,20 +71,34 @@ if __name__ == '__main__':
     print(outSuccess['status'])
 
 
-    d6tflow.run(Task_getCountries(runDate=runDate))
-    outSuccess = Task_getCountries(runDate=runDate).output().load()
-
-    print()
-    print('Should be successful !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-    print(outSuccess['status'])
+    # ### produce success
+    # d6tflow.run(Task_getData(runDate=runDate, type='Death'))
+    # outSuccess = Task_getData(runDate=runDate,
+    #                               type='Death').output().load()
 
 
+    # print()
+    # print('Should be successful !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    # print(outSuccess['status'])
 
-    # produce failure
-    d6tflow.run(Task_getData(runDate=runDate, type='Blubber'))
-    outFailure = Task_getData(runDate=runDate,
-                                  type='Blubber').output().load()
 
-    print()
-    print('Intentional Falure !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-    print(outFailure['status'])
+
+
+    # ##################
+    # d6tflow.run(Task_getCountries(runDate=runDate))
+    # outSuccess = Task_getCountries(runDate=runDate).output().load()
+
+    # print()
+    # print('Should be successful !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    # print(outSuccess['status'])
+
+
+
+    # # produce failure
+    # d6tflow.run(Task_getData(runDate=runDate, type='Blubber'))
+    # outFailure = Task_getData(runDate=runDate,
+    #                               type='Blubber').output().load()
+
+    # print()
+    # print('Intentional Falure !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    # print(outFailure['status'])

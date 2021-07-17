@@ -55,7 +55,10 @@ def getTimeseries_T(type:str='Death'):
 if __name__ == '__main__':
     # out = getTimeseries_T('Death')
     out = getTimeseries_T('Confirmed')
+    print(out)
+
     countries = get_countries()
+    print(countries)
 
 
     print('success')
